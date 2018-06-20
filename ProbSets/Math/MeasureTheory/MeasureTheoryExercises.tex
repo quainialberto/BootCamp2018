@@ -69,24 +69,24 @@
 
 \textbf{\Large Measure theory exercises}
 
-\textbf{Exercise 1.3}
+\textbf{Exercise 1.3:}
 \begin{enumerate}
 \item
 $\mathcal G_1 := \{A: A\subset\mathbb R, A \text{ is open}\}$ is not an algebra on $\mathbb R$, hence not a $\sigma-$algebra.
 Let $a\in\mathbb R$ and define $A_1:=(-\infty, a)$. 
-Clearly $A_1\in\mathcal G_1$.
-However, $A_1^c = [a, +\infty)\notin\mathcal G_1$.
+Clearly $A_1\in\mathcal G_1$, however its complement, $A_1^c = [a, +\infty)$, is not in $\mathcal G_1$.
 
 \item
-$\mathcal G_2 := \{A: A \text{ is a finite union of intervals of the form } (a, b], (-\infty, b], (a, \infty)\}$ is an algebra, but not a $\sigma-$algebra.
-take $a,b\in\mathbb R$ such that $a = b$, then $(a, b]=\emptyset$ and $(a, b]\in\mathcal G_2$.
-Also, $\mathcal G_2$ is closed under complements.
-The former is true because $(a, b]^c=(-\infty, a]\cap(b, \infty)\in\mathcal G_2$,
-$(-\infty, b]^c=(b, \infty)\in\mathcal G_2$ and $(a, \infty)^c=(-\infty, a]\in\mathcal G_2$.
-We can also show that the complement of any finite union of intervals of the the form
-$(a, b]$, $(-\infty, b]$ and $(a, \infty)$ is also in $\mathcal G_2$ by the properties of complements.
-Finally, $\mathcal G_2$ is closed under finite union as the finite union of finite unions of intervals of the form $(a, b]$, $(-\infty, b]$ and $(a, \infty)$ is still a finite union.
-However, $\mathcal G_2$ is not a $\sigma-$algebra as an infinite union of finite unions of intervals of the form $(a, b]$, $(-\infty, b]$ and $(a, \infty)$ is an infinite union of intervals of the form $(a, b]$, $(-\infty, b]$ and $(a, \infty)$ and thus it would not belong to $\mathcal G_2$.
+$\mathcal G_2 := \{A: A \text{ is a finite union of intervals of the form } (a, b], (-\infty, b], (a, \infty)\}$ 
+is an algebra, but not a $\sigma-$algebra.
+Clearly, $\mathcal G_2$ contains the empty set.
+Also, $\mathcal G_2$ is closed under complements because it contains the complements of the three basic intervals 
+$(a, b]$, $(-\infty, b]$ and $(a, \infty)$ and, by the properties of complements, 
+it contains the complements of any finite union of the basic intervals.
+Finally, $\mathcal G_2$ is closed under finite union as the finite union of finite unions 
+of the three basic intervals is still a finite union of these basic intervals.
+However, $\mathcal G_2$ is not a $\sigma-$algebra since it clearly does not contain an infinite union 
+of the three basic interval.
 
 \item
 $\mathcal G_3 := \{A: A \text{ is a countable union of intervals of the form } (a, b], (-\infty, b], (a, \infty)\}$ is a $\sigma-$algebra, hence also an algebra.
@@ -94,7 +94,7 @@ Everything discussed for $\mathcal G_2$ holds except for the fact that infinite 
 
 \end{enumerate}
 
-\textbf{Exercise 1.7}
+\textbf{Exercise 1.7:}
 By definition, any $\sigma-$algebra contains $\emptyset$.
 Also, it contains $X$, since it must be closed under complements.
 Therefore, $\{\emptyset, X\}$ is contained in any $\sigma-$algebra and is thus the smallest $\sigma-$algebra on $X$.
@@ -102,7 +102,7 @@ Therefore, $\{\emptyset, X\}$ is contained in any $\sigma-$algebra and is thus t
 On the other hand, by definition, any $\sigma-$algebra on $X$ is a set of subsets of $X$, 
 therefore it is contained in the power set of $X$, which is the set of all subsets of $X$.
 
-\textbf{Exercise 1.10}
+\textbf{Exercise 1.10:}
 Let $\mathcal N = \underset{\alpha}{\cap}\mathcal S_\alpha$.
 $\emptyset\in\mathcal N$ because $\emptyset\in\mathcal S_\alpha$, for every $\alpha$.
 Also, if $A\in\mathcal N$, we have that $A$ is in every $\mathcal S_\alpha$,
@@ -111,7 +111,7 @@ Finally, if $A_1, A_2,\ldots\in\mathcal N$, they belong to each $\mathcal S_\alp
 $\cup_{n=1}^\infty A_n$, and we have that it also belongs to $\mathcal N$.
 In conclusion, $\mathcal N$ is a $\sigma-$algebra.
 
-\textbf{Exercise 1.17}
+\textbf{Exercise 1.17:}
 \begin{enumerate}
 \item
 Take $A,B\in\mathcal S$, with $A\subset B$.
@@ -129,13 +129,13 @@ By monotonicity, for each $n\in\mathbb N$, $\mu(B_n)\leq\mu(A_n)$ since $B_n\sub
 Therefore we obtain $\mu(A)=\sum_{n\in\mathbb N}\mu(B_n)\leq \sum_{n\in\mathbb N}\mu(A_n)$.
 \end{enumerate}
 
-\textbf{Exercise 1.18}
+\textbf{Exercise 1.18:}
 $\lambda$ is a measure because (i) $\lambda(\emptyset) = \mu(\emptyset\cap B) = \mu(\emptyset) = 0$
 and (ii) for any $\{A_n\}_{n\in\mathbb N}\subset\mathcal S$ with $A_n$'s paiwise disjoint we have
 $\lambda(\cup_{n\in\mathbb N} A_n) = \mu\left((\cup_{n\in\mathbb N} A_n) \cap B\right) =
 \mu\left(\cup_{n\in\mathbb N} (A_n \cap B)\right) = \sum_{n\in\mathbb N}\mu(A_n\cap B) = \sum_{n\in\mathbb N}\lambda(A_n)$.
 
-\textbf{Exercise 1.20}
+\textbf{Exercise 1.20:}
 Since $\mu(A_1)<\infty$, by monotonicity $\mu(A_i)<\infty$ for each $n\in\mathbb N$.
 Consider the increasing sequence $\{A_1-A_n\}_{n\in\mathbb N}$,
 define $A=\cap_{n\in\mathbb N} A_n$
