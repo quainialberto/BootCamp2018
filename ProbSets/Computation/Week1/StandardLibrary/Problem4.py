@@ -1,8 +1,12 @@
-from itertools import chain, combinations
+from itertools import combinations
 
 def powerset(A):
-    A = list(A)
-    return chain.from_iterable(combinations(A, r) for r in range(len(A) + 1))
+    powA = []
+    for i in range(len(A)+1):
+        addSet = combinations(A, i)
+        for item in addSet:
+            powA.append(set(item))
+    return powA
 
-A = ['a', 'b', 'c']
+A = ['aa', 'b', 'c']
 print( list(powerset(A)) )
