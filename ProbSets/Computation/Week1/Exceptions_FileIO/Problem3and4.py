@@ -1,6 +1,6 @@
 import ContentFilter as cf
 
-#cf1 = cf.ContentFilter("file.txt")
+cf1 = cf.ContentFilter("file.txt")
 cf2 = cf.ContentFilter("cf_example1.txt")
 print(cf2.filename)
 print(cf2.content)
