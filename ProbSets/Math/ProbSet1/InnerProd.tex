@@ -390,10 +390,14 @@ then
 \end{equation*}
 
 Now let $R_x:\mathbb M_n(\mathbb F)\to\mathbb F^n, A\mapsto Ax$ for every $x\in\mathbb F^n$.
+Notice that
 \begin{equation*}
-    ||R_x||=\sup_{x\neq 0}\frac{||Ax||}{||A||}=
-    \sup_{x\neq 0}\frac{||Ax||||x||}{||A||||x||}
+    ||R_x||=\sup_{A\neq 0}\frac{||Ax||}{||A||}=
+    \sup_{A\neq 0}\frac{||Ax||||x||}{||A||||x||}\leq
+    \sup_{A\neq 0}\left(\frac{||Ax||||x||}{||Ax||}\right)=
+    ||x||.
 \end{equation*}
+
 
 \subsection*{Exercise 30}
 Take an arbitrary $A\in\mathbb M_n(\mathbb F)$.
