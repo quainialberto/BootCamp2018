@@ -347,6 +347,73 @@ and
 \end{equation*}
 prove that $||x||_\infty\leq||x||_2\leq \sqrt{n}||x||_\infty$.
 
-\subsection*{Exercise }
+\subsection*{Exercise 28}
+(i)
+Notice that (applying the results of the previous exercise)
+\begin{align*}
+    \sup_{x\neq 0}\frac{||Ax||_1}{||x||_1}\leq
+    \sup_{x\neq 0}\frac{||Ax||_1}{||x||_1}\leq
+    \sqrt{n}\sup_{x\neq 0}\frac{||Ax||_2}{||x||_2},
+\end{align*}
+and
+\begin{align*}
+    \sup_{x\neq 0}\frac{||Ax||_1}{||x||_1}\geq
+    \sup_{x\neq 0}\frac{||Ax||_2}{||x||_1}\geq
+    \frac{1}{\sqrt{n}}\sup_{x\neq 0}\frac{||Ax||_2}{||x||_2}
+\end{align*}
+imply that $\frac{1}{\sqrt{n}}||A||_2\leq||A||_1\leq||A||_2$.
+
+(ii)
+Notice that
+\begin{equation*}
+    \sup_{x\neq 0}\frac{||Ax||_2}{||x||_2}\leq
+    \sup_{x\neq 0}\frac{\sqrt{n}||Ax||_\infty}{||x||_\infty},
+\end{equation*}
+and
+\begin{equation*}
+    \sup_{x\neq 0}\frac{||Ax||_2}{||x||_2}\geq
+    \sup_{x\neq 0}\frac{||Ax||_\infty}{\sqrt{n}||x||_\infty}.
+\end{equation*}
+
+\subsection*{Exercise 29}
+Take an arbitrary $x\neq 0$ and suppose $||\cdot||$ is an inner product induced norm.
+Since
+\begin{equation*}
+    ||Qx||=\left(<Qx,Qx>\right)^{1/2}=
+    \left(<Q^HQx,x>\right)^{1/2}=
+    \left(<x,x>\right)^{1/2}=
+    ||x||,
+\end{equation*}
+then 
+\begin{equation*}
+    ||Q||=\sup_{x\neq 0}\frac{||Qx||}{||x||}=1.
+\end{equation*}
+
+Now let $R_x:\mathbb M_n(\mathbb F)\to\mathbb F^n, A\mapsto Ax$ for every $x\in\mathbb F^n$.
+\begin{equation*}
+    ||R_x||=\sup_{x\neq 0}\frac{||Ax||}{||A||}=
+    \sup_{x\neq 0}\frac{||Ax||||x||}{||A||||x||}
+\end{equation*}
+
+\subsection*{Exercise 30}
+Take an arbitrary $A\in\mathbb M_n(\mathbb F)$.
+First, $||A||_S=||SAS^{-1}||\geq 0$ for any $A$ because 
+$||\cdot||$ is a norm on $\mathbb M_n(\mathbb F)$ and 
+$SAS^{-1}\in\mathbb M_n(\mathbb F)$.
+In addition, $||0||_S=||S0S^-1||=||0||=0$ and if
+$0=||A||_S=||SAS^{-1}||$, then $SAS^{-1}=0$ which implies $A=0$.
+Second, take $a\in\mathbb F$, then 
+\begin{equation*}
+    ||aA||_S=||SaAS^{-1}||=
+    ||aSAS^{-1}||=|a|||SAS^{-1}||=
+    |a|||A||_S.
+\end{equation*}
+Finally, let $B\in\mathbb M_n(\mathbb F)$ and notice that
+\begin{equation*}
+    ||A+B||_S=||S(A+B)S^{-1}||=
+    ||SAS^{-1}+SBS^{-1}||\leq||SAS^{-1}||+||SBS^{-1}||=
+    ||A||_S+||B||_S.
+\end{equation*}
+Therefore $||\cdot||_S$ is a norm on $\mathbb M_n(\mathbb F)$.
 
 \end{document}
