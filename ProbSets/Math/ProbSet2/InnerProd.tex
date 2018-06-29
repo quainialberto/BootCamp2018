@@ -245,7 +245,18 @@ $A=QR=\tilde{Q}\tilde{R}$.
 Therefore QR-decomposition is not unique.
 
 (ii)
-Now take a reduced QR-decomposition $A=\hat{Q}\hat{R}$,
+Suppose now that $A$ is invertible and can be decomposed into 
+two different QR decompositions: $QR$ and $\tilde{Q}\tilde{R}$,
+where the diagonal entries of $R$ and $\tilde{R}$ are strictly positive.
+Then both $R$ and $\tilde{R}$ are invertible and we conclude that
+$\tilde{R}^{-1}R=Q^H\tilde{Q}$.
+Since $R$ and $\tilde{R}$ are upper triangular, so is the LHS of the previous equation.
+On the other hand, since $Q$ and $\tilde{Q}$ are orthonormal, so is the RHS.
+Therefore $\tilde{R}^{-1}R=I$ and, by unicity of the inverse, we conclude that $R=\tilde{R}$,
+and so $Q=\tilde{Q}$.
+
+\subsection*{Exercise 17}
+Take a reduced QR-decomposition $A=\hat{Q}\hat{R}$,
 where $\hat{Q}\in\mathbb M_{mxn}$ is orthonormal and $\hat{R}\in\mathbb M_{nxn}$ is upper triangular.
 Since $A$ has full column rank, $\hat{R}$ has full rank and is therefore nonsingular.
 Then,
@@ -400,7 +411,7 @@ Notice that
 
 
 \subsection*{Exercise 30}
-Take an arbitrary $A\in\mathbb M_n(\mathbb F)$.
+Take arbitrary matrices $A,B\in\mathbb M_n(\mathbb F)$.
 First, $||A||_S=||SAS^{-1}||\geq 0$ for any $A$ because 
 $||\cdot||$ is a norm on $\mathbb M_n(\mathbb F)$ and 
 $SAS^{-1}\in\mathbb M_n(\mathbb F)$.
@@ -419,5 +430,66 @@ Finally, let $B\in\mathbb M_n(\mathbb F)$ and notice that
     ||A||_S+||B||_S.
 \end{equation*}
 Therefore $||\cdot||_S$ is a norm on $\mathbb M_n(\mathbb F)$.
+To show that it is a matrix norm, notice that
+\begin{align*}
+    ||AB||_S=||SABS^{-1}||=
+    ||SAS^{-1}ABS^{-1}||\leq
+    ||SAS^{-1}||||SBS^{-1}||,
+\end{align*}
+and so $||AB||_S\leq||A||_S||B||_S$.
+
+\subsection*{Exercise 37}
+Since $V:=\mathbb R[x; 2]$ is isomorphic to $\mathbb R^3$,
+we can represent an arbitrary element $p\in V$, $p=ax^2+bx+c$,
+as a vector on $\mathbb R^3$, $p=(a, b, c)$.
+Then we need to find a vector $q=(a', b', c')$ such that
+$p'q=2a+b=p'(1)=L[p]$.
+Thus, $q=(2, 1, 0)$.
+
+\subsection*{Exercise 38}
+Let $p=ax^2+vx+c$ be an arbitrary element of $V=\mathbb F[x;2]$.
+Since we can represent $p=(a, b, c)^T$, and $p'=D(p)=(0,2a,b)^T$,
+we that the matrix representation of $D$ is
+\begin{equation*}
+    D = \begin{bmatrix}
+        0 & 0 & 0\\
+        2 & 0 & 0\\
+        0 & 1 & 0
+    \end{bmatrix},
+\end{equation*}
+and the hermitian is just the transpose
+\begin{equation*}
+    D = \begin{bmatrix}
+        0 & 2 & 0\\
+        0 & 0 & 1\\
+        0 & 0 & 0
+    \end{bmatrix}.
+\end{equation*}
+
+\subsection*{Exercise 39}
+(i)
+By definition of adjoint and linearity of inner products,
+\begin{align*}
+    &<(S+T)^*(w),v>_V=
+    <w,(S+T)(v)>_W=\\
+    &<w,S(v)+T(v)>_W=
+    <w,S(v)>_W+<w,T(v)>_W=\\
+    &<S^*(w),v>_V + <T^*(w),v>_V=
+    <S^*(w)+T^*(w),v>_V.
+\end{align*}
+Then $(S+T)^*=S^*+T^*$.
+Also,
+\begin{align*}
+    &<(\alpha T)^*(w),v>_V=
+    <w,(\alpha T)(v)>_W=\\
+    &<w,\alpha T(v)>_W=
+    \alpha<w, T(v)>=\\
+    &\alpha<T^*(w),v>=
+    <\bar{\alpha}T^*(w),v>,
+\end{align*}
+thus $(\alpha T)^*=\bar{\alpha}T$.
+
+(ii)
+
 
 \end{document}
