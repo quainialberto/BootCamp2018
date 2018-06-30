@@ -92,10 +92,18 @@
 \end{align*}
 
 \subsection*{Exercise 3}
+(i)
 $<x,x^5> = \int_0^1x^6dx=x^7/7|_0^1=1/7$,
 $||x|| = \int_0^1x^2dx=x^3/3|_0^1=1/3$ and
 $||x^5|| = \int_0^1x^10dx=x^11/11|_0^1=1/11$.
 Therefore $\cos\theta=\sqrt{33}/7$ implies $\theta=34.5$.
+
+(ii)
+\begin{align*}
+    \frac{<f,g>}{||f||||g||}=\frac{<x,x^5>}{||x||||x^5||}=
+    \frac{1/7}{\sqrt{1/(3\cdot11)}}=\frac{\sqrt{33}}{7}.
+\end{align*}
+Therefore $\theta=0.608$.
 
 \subsection*{Exercise 8}
 (i)
@@ -137,14 +145,15 @@ and so on, shows that $S$ is an orthonormal basis.
 
 (ii)
 \begin{align*}
-    ||t|| = \frac{1}{\pi}\int_{-\pi}^\pi tdt=
-    \frac{1}{\pi}\left.\frac{t^2}{2}\right\lvert_{-\pi}^\pi=0.
+    ||t|| = \sqrt{\frac{1}{\pi}\int_{-\pi}^\pi t^2dt}=
+    \frac{1}{\sqrt{\pi}}\sqrt{\pi^3/3+\pi^3/3}=
+    \pi\sqrt{2/3}.
 \end{align*}
 
 (iii)
 Since $<x,\cos(3x)>=0$ for any $x\in S$, $\text{proj}_X(\cos(3x))=0$.
 
-(i)
+(iv)
 \begin{align*}
     &<\sin(t),t>=\sin(t)-t\cos(t)\lvert_{-\pi}^\pi=2\pi,\\
     &<\cos(t),t>=t\sin(t)-\cos(t)\lvert_{-\pi}^\pi=0,\\
