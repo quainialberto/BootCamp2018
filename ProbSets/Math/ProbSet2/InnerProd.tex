@@ -470,26 +470,230 @@ and the hermitian is just the transpose
 (i)
 By definition of adjoint and linearity of inner products,
 \begin{align*}
-    &<(S+T)^*(w),v>_V=
-    <w,(S+T)(v)>_W=\\
-    &<w,S(v)+T(v)>_W=
-    <w,S(v)>_W+<w,T(v)>_W=\\
-    &<S^*(w),v>_V + <T^*(w),v>_V=
-    <S^*(w)+T^*(w),v>_V.
+    &<(S+T)^*w,v>_V=
+    <w,(S+T)v>_W=\\
+    &<w,Sv+Tv>_W=
+    <w,Sv>_W+<w,Tv>_W=\\
+    &<S^*w,v>_V + <T^*w,v>_V=
+    <S^*w+T^*w,v>_V.
 \end{align*}
 Then $(S+T)^*=S^*+T^*$.
 Also,
 \begin{align*}
-    &<(\alpha T)^*(w),v>_V=
-    <w,(\alpha T)(v)>_W=\\
-    &<w,\alpha T(v)>_W=
-    \alpha<w, T(v)>=\\
-    &\alpha<T^*(w),v>=
-    <\bar{\alpha}T^*(w),v>,
+    &<(\alpha T)^*w,v>_V=
+    <w,(\alpha T)v>_W=\\
+    &<w,\alpha Tv>_W=
+    \alpha<w, Tv>=\\
+    &\alpha<T^*w,v>=
+    <\bar{\alpha}T^*w,v>,
 \end{align*}
 thus $(\alpha T)^*=\bar{\alpha}T$.
 
 (ii)
+By the definition of adjoint of $S$ and the properties of inner products we have that
+\begin{align*}
+    <w,Sv>_W=<S^*w,v>_V=
+    \overline{<v,S^*w>_V}=\overline{<S^{**}v,w>_W}=
+    <w,S^{**}v>_W
+\end{align*}
+for all $v\in V$ and $w\in W$.
+Therefore $S=S**$.
 
+(iii)
+By the definition of adjoint we have
+\begin{align*}
+    &<(ST)^*v',v>_V=<v',(ST)v>_V=<v',S(Tv)>_V=\\
+    &<S^*v',Tv>_V=<T*S*v',v>_V,
+\end{align*}
+thereby proving that $(ST)^*=T^*S^*$.
+
+(iv)
+Using (iii) we have $T^*(T^*)^{-1}=(TT^{-1})^*=I^*=I$.
+
+\subsection*{Exercise 40}
+(i)
+Let $B,C\in\mathbb M_n(\mathbb F)$.
+By definition of Frobenious inner product
+\begin{align*}
+    <B,AC>_F=\text{tr}(B^HAC)=\text{tr}((A^HB)^HC)=<A^HB,C>_F.
+\end{align*}
+
+(ii)
+By definition of Frobenious norm and the properties of the trace we have
+\begin{align*}
+    <A_2,A_3A_1>_F=\text{tr}(A_2^HA_3A_1)=
+    \text{tr}(A_1A_2^HA_3)=\text{tr}((A_2A_1^H)^HA_3)=
+    <A_2A_1^H,A_3>_F=<A_2A_1^*,A_3>.
+\end{align*}
+
+(iii)
+Given $B,C\in\mathbb M_n(\mathbb F)$, we have $<B,AC-CA>=<B,AC>-<B,CA>$. 
+Applying (ii) to the second term we get $<B,CA>=<BA^*,C>$.
+On the other hand, 
+\begin{equation*}
+    <B,AC>=\text{tr}(B^HAC)=\text{tr}((A^HB)^HC)=<A^HB,C>=<A^*B,C>.
+\end{equation*}
+Putting all together we obtain that $T_A^*=T_{A^*}$.
+
+\subsection*{Exercise 44}
+Suppose there exists an $x\in\mathbb F^n$ such that $Ax=b$.
+Then, for every $y\in\mathcal N(A^H)$, 
+$$<y,b>=<y,Ax>=<A^Hy,x>=<0,x>=0.$$
+Now suppose that there exists a $y\in\mathcal N(A^H)$ such that $<y,b>\neq0$.
+Then $b\notin\mathcal N(A^H)^\perp=\mathcal R(A)$.
+Therefore for no $x\in\mathbb F^n$, $Ax=b$.
+
+\subsection*{Exercise 45}
+Let $A\in\text{Sym}_n(\mathbb R)$ and $B\in\text{Skew}_n(\mathbb R)$.
+Then 
+\begin{align*}
+    <B,A>=\text{Tr}(B^TA)=\text{Tr}(AB^T)=
+    \text{Tr}(A^T(-B))=-<A,B>.
+\end{align*}
+We conclude that $<A,B>=0$ and $\text{Skew}_n(\mathbb R)\subset\text{Sym}_n(\mathbb R)^\perp$.
+Now suppose $B\in\text{Sym}_n(\mathbb R)^\perp$.
+As for any other matrix, $B+B^T\in\text{Sym}_n(\mathbb R)$.
+Thus,
+\begin{align*}
+    0 = <B+B^T,B>=\text{Tr}((B+B^T)B) =\text{Tr}(BB + B^TB)=
+    \text{Tr}(BB)+\text{Tr}(B^TB),
+\end{align*}
+which implies $<B^T,B>=<-B,B>$ and so $B^T=-B$.
+Therefore $\text{Sym}_n(\mathbb R)^\perp=\text{Skew}_n(\mathbb R)$.
+
+\subsection*{Exercise 46}
+(i)
+if $x\in\mathcal N(A^HA)$, $0=(A^HA)x=A^H(Ax)$ and $Ax\in\mathcal N(A^H)$.
+Also, $Ax$ is in the range of $A$ by definition.
+
+(ii)
+Suppose $x\in\mathcal N(A)$.
+Then $Ax=0$.
+Premultiplying by $A^H$ both sides of the equation we obtain $A^HAx=A^H0=0$
+and so $x\in\mathcal N(A^HA)$.
+On the other hand, suppose $x\in\mathcal N(A^HA)$.
+Then $||Ax||=x^HA^HAx=x^H0=0$, so that $Ax=0$ and $x\in\mathcal N(A)$
+
+(iii)
+By the rank-nullity theorem we have $n=\text{Rank}(A)+\text{Dim}\mathcal N(A)$
+and $n=\text{Rank}(A^HA)+\text{Dim}\mathcal N(A^HA)$.
+Then by (ii) it follows that $\text{Rank}(A)=\text{Rank}(A^HA)$.
+
+(iv)
+By (iii) and the assumption on $A$ we have that $n=\text{Rank}(A)=\text{Rank}(A^HA)$.
+Since $A^HA\in\mathbb M_n$, it is nonsingular.
+
+\subsection*{Exercise 47}
+(i)
+Notice that
+\begin{align*}
+    P^2=(A(A^HA)^{-1}A^H)(A(A^HA)^{-1}A^H)=
+    A(A^HA)^{-1}A^HA(A^HA)^{-1}A^H=
+    A(A^HA)^{-1}A^H=P.
+\end{align*}
+
+(ii)
+Notice that
+\begin{align*}
+    P^H=(A(A^HA)^{-1}A^H)^H=
+    (A^H)^H(A^HA)^{-H}A^H=A(A^HA)^{-1}A^H=P.
+\end{align*}
+
+(iii)
+$A$ has rank $n$, therefore $P$ has at most rank $n$.
+Take $y$ in the range of $A$.
+Then there exists an $x\in\mathbb F^n$ such that $y=Ax$.
+Then
+\begin{align*}
+    Py=A(A^HA)A^Hy=A(A^HA)^{-1}A^HAx=Ax=y
+\end{align*}
+shows that $y$ is also in the range of $P$.
+Therefore $\text{Rank}(P)\geq\text{Rank}(A)$ and so $P$ has rank $p$
+
+\subsection*{Exercise 48}
+(i)
+Let $A,B\in\mathbb M_n(\mathbb R)$ and $x\in\mathbb R$.
+Then
+\begin{align*}
+    P(A+xB)=\frac{(A+xB)+(A+xB)^T}{2}=
+    \frac{A+A^T+x(B+B^T)}{2}=P(A)+xP(B).
+\end{align*}
+Thus $P$ is a linear transformation.
+
+(ii)
+Now notice that
+\begin{align*}
+    P^2(A)=\frac{\frac{A+A^T}{2}+\frac{A^T+A}{2}}{2}=
+    \frac{\frac{2A+2A^T}{2}}{2}=\frac{2A+2A^T}{2}=P(A).
+\end{align*}
+
+(iii)
+By definition of adjoint we have $<P^*(A),B>=<A,P(B)>$.
+Then, notice that
+\begin{align*}
+    &<A,P(B)>=<A,(B+B^T)/2>=
+    <A,B/2>+<A,B^T/2>=\\
+    &\text{Tr}(A^TB/2)+\text{Tr}(A^TB^T/2)=
+    \text{Tr}(A^T/2B)+\text{Tr}(BA/2)=\\
+    &\text{Tr}(A^T/2B)+\text{Tr}(A/2B)=
+    <(A+A^T)/2,B>=<P(A),B>.
+\end{align*}
+Thus $P=P^*$.
+
+(iv)
+Suppose $A\in\mathcal N(P)$. 
+Then $0=P(A)=(A+A^T)/2$ implies $A^T=-A$, thus $\mathcal N(P)\subset\text{Skew}(\mathbb R)$.
+Now suppose $A\in\text{Skew}(\mathbb R)$.
+Then $A^T=-A$ and so $P(A)=(A+A^T)/2=0$. Thus $\text{Skew}(\mathbb R)\subset\mathcal N(P)$.
+
+(v)
+Let $A\in\mathbb M_n(\mathbb R)$.
+Then $P(A)=(A+A^T)/2=(A^T+A)/2=P(A)^T$ and so $\mathcal R(P)=\text{Sym}(\mathbb R)$.
+Now let $A=\text{Sym}(\mathbb R)$.
+Thus $A=A^T$ and $P(A)=(A+A^T)/2=(A+A)/2=A$ and so $A\in\mathcal R(P)$.
+This shows that $\mathcal R(P)=\text{Sym}(\mathbb R)$.
+
+(vi)
+Notice that
+\begin{align*}
+    &||A - P(A)||_F^2 = <A - P(A), A - P(A)> =
+    <A - \frac{A + A^T}{2}, A - \frac{A + A^T}{2}> =\\
+    &<\frac{A - A^T}{2}, \frac{A - A^T}{2}> = 
+    \text{Tr}\left(\left(\frac{A - A^T}{2}\right)^T\frac{A - A^T}{2}\right)=\\
+    &\text{Tr}\left(\frac{A^T - A}{2}\frac{A - A^T}{2}\right) = 
+    \text{Tr}\left(\frac{A^TA - A^2 - (A^T)^2 + AA^T}{4}\right) =\\ 
+    &\text{Tr}\left(\frac{A^TA - A^2 - A^2 + A^TA}{4}\right) =
+    \text{Tr}\left(\frac{A^TA - A^2}{2}\right) = 
+    \frac{\text{Tr}(A^TA) - \text{Tr}(A^2)}{2}.
+\end{align*}
+Therefore $||A - P(A)||_F = \sqrt{\frac{\text{Tr}(A^TA) - \text{Tr}(A^2)}{2}}$.
+
+\subsection*{Exercise 50}
+We want to estimate $y^2=1/s+rx^2/s$ via OLS.
+We rewrite the model in the form $Ax=b$ where
+$b_i=y_i^2$, $A_i=(1\ x_i)$ and $x=(\beta_1\ \beta_2)^T$ where $\beta_1=1/s$ and $\beta_2=r/s$.
+Then the normal equations are $A^HA\hat{x}=A^Hb$, where
+\begin{align*}
+    A^HA\hat{x} =
+    \begin{bmatrix}
+        \sum_i 1 & \sum_ix_i^2\\
+        \sum_ix_i^2& \sum_ix_i^4
+    \end{bmatrix} 
+    \begin{bmatrix}
+        \hat{\beta}_1\\ \hat{\beta}_2
+    \end{bmatrix} =
+    \begin{bmatrix}
+        n\hat{\beta}_1 - \hat{\beta}_2\sum_i x_i^2\\
+        \hat{\beta}_1\sum_ix_i^2 - \hat{\beta}_2\sum_ix_i^4
+    \end{bmatrix}
+\end{align*}
+and
+\begin{align*}
+    A^Hb=
+    \begin{bmatrix}
+        \sum_i y_i^2\\
+        \sum_i x_i^2y_i^2
+    \end{bmatrix}.
+\end{align*}
 
 \end{document}
