@@ -278,12 +278,21 @@ and premultiplying both LHS and RHS of the last equation by $\hat{R}^{-1}$ gives
 $\hat{R}x = \hat{Q}^Hb$.
 
 \subsection*{Exercise 23}
-Let $x,y\in V$ and define $v:=-y$.
-Since a norm is nonnegative and satisfies the triangular property, 
-$||x||-||v||\leq ||x||+||v||\leq||x+v||$.
-Then our definition of $v$ implies $||x||-||y||=||x||-||-y||\leq||x-y||$.
-Interchanging the role of $x$ and $y$ and using the homogeneity property of norms we have
-$||y||-||x||\leq||y-x||=||-(y-x)||=||x-y||$,
+Let $x,y\in V$.
+If $||x||\geq||y||$, then 
+\begin{align*}
+    \left| ||x||-||y||\right|=
+    ||x||-||y||\leq
+    ||x-y||+||y||-||y||=
+    ||x-y||.
+\end{align*}
+On the other hand, if $||x||\leq||y||$, then
+\begin{align*}
+    \left| ||x||-||y||\right|=
+    ||y||-||x||\leq
+    ||y-x||+||x||-||x||=
+    ||y-x||=||x-y||,
+\end{align*}
 and the result follows.
 
 \subsection*{Exercise 24}
@@ -372,7 +381,7 @@ prove that $||x||_\infty\leq||x||_2\leq \sqrt{n}||x||_\infty$.
 Notice that (applying the results of the previous exercise)
 \begin{align*}
     \sup_{x\neq 0}\frac{||Ax||_1}{||x||_1}\leq
-    \sup_{x\neq 0}\frac{||Ax||_1}{||x||_1}\leq
+    \sup_{x\neq 0}\frac{||Ax||_1}{||x||_2}\leq
     \sqrt{n}\sup_{x\neq 0}\frac{||Ax||_2}{||x||_2},
 \end{align*}
 and
@@ -562,13 +571,15 @@ Then
 We conclude that $<A,B>=0$ and $\text{Skew}_n(\mathbb R)\subset\text{Sym}_n(\mathbb R)^\perp$.
 Now suppose $B\in\text{Sym}_n(\mathbb R)^\perp$.
 As for any other matrix, $B+B^T\in\text{Sym}_n(\mathbb R)$.
-Thus,
+For every $A\in\text{Sym}_n(\mathbb R)$ we have
 \begin{align*}
-    0 = <B+B^T,B>=\text{Tr}((B+B^T)B) =\text{Tr}(BB + B^TB)=
-    \text{Tr}(BB)+\text{Tr}(B^TB),
+    &<B+B^T, A> = <B,A> + <B^T,A> = \text{Tr}(BA) = \text{Tr}(BA^T)\\
+    &\text{Tr}(A^TB) = \text{Tr}((A^TB)^T) = \text{Tr}(B^TA) = <B,A> = 0.
 \end{align*}
-which implies $<B^T,B>=<-B,B>$ and so $B^T=-B$.
-Therefore $\text{Sym}_n(\mathbb R)^\perp=\text{Skew}_n(\mathbb R)$.
+Since this holds for every $A$, we can pick $A=B+B^T$.
+However $<A,A>=0$ if and only if $A=0$, therefore $B=-B^T$ and 
+$\text{Sym}_n(\mathbb R)^\perp\subset\text{Skew}_n(\mathbb R)$.
+Hence $\text{Sym}_n(\mathbb R)^\perp=\text{Skew}_n(\mathbb R)$.
 
 \subsection*{Exercise 46}
 (i)
