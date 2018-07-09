@@ -1,0 +1,360 @@
+\documentclass[11.5pt, letterpaper, bibtotoc,
+    tablecaptionabove, figurecaptionabove]{article}
+
+
+\setlength{\headheight}{10pt}
+\setlength{\headsep}{15pt}
+\setlength{\topmargin}{-25pt}
+\setlength{\topskip}{0in}
+\setlength{\textheight}{8.7in}
+\setlength{\footskip}{0.3in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+
+\usepackage{setspace}
+\setstretch{1.2}
+\setlength{\parskip}{5pt}%{6pt}
+\setlength{\parindent}{0pt}
+
+\usepackage{subfigure}
+\usepackage{subfiles}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\graphicspath{{images/}{../images/}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}{Notation}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remarks}{Remarks}
+\newtheorem{examples}{Examples}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ri}{ri}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\essential}{ess}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rank}{rank}
+
+\makeatletter
+\newcommand{\leqnomode}{\tagsleft@true\let\veqno\@@leqno}
+\newcommand{\reqnomode}{\tagsleft@false\let\veqno\@@eqno}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert#1
+\right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\makeatother
+
+\usepackage{bm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=red,
+}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\textbf{Alberto Quaini}
+
+\subsection*{Exercise 3}
+$D:V\to V$ can be represented in matrix form as
+\begin{equation*}
+    \begin{bmatrix}
+        0 & 2 & 0\\
+        0 & 0 & 1\\
+        0 & 0 & 0
+    \end{bmatrix},
+\end{equation*}
+which is upper triangular with all diagonal elements zero.
+Thus, all eigenvalues are $0$, with algebraic multiplicity $3$.
+However, if $x$ is an eigenvector of $D$ corresponding to $\lambda = 0$,
+then $Dx=0$.
+Given the form of $D$ we conclude that $x_2=x_3=0$ and so the eigenspace
+of $\lambda=0$ is $\text{span}\{1\}$.
+Therefore, $\lambda=0$ has geometric multiplicity $1$.
+
+\subsection*{Exercise 4}
+(i)
+Let
+\begin{equation*}
+    A = 
+    \begin{bmatrix}
+        a & b\\
+        c & d
+    \end{bmatrix}.
+\end{equation*}
+Since $A$ is hermitian, we know that $a = \bar{a}$, $d = \bar{d}$ and $b = \bar{c}$.
+Then 
+\begin{align*}
+    \text{det}A &= ad - cb = ad - c\bar{c} = ad - ||c||^2 =\\
+    &\bar{a}\bar{d}-||c||^2 = \overline{ad - ||c||^2}=\overline{\text{det}A}
+\end{align*}    
+and 
+\begin{align*}
+    \text{Tr}(A) = a + d = \bar{a} + \bar{d} = \overline{a + d} = \overline{\text{Tr}(A)}.
+\end{align*}
+Thus both the determinant and the trace of $A$ are real.
+Notice that usign Exercise $3$ we have 
+
+\begin{align*}
+    \lambda_{1,2} = \frac{(a + d) \pm \sqrt{(a + d)^2 - 4(ad-||c||^2)}}{2}
+\end{align*}
+and the discriminant becomes $(a-d)^2 + 4||c||^2$, which is real and nonnegative,
+therefore $A$ has only real eigenvalues.
+
+(ii)
+If $A$ is skew-symmetric, then $a=-\bar{a}$ and $d=-\bar{d}$, so they are imaginary, and $b=-\bar{c}$.
+Thus $bc=-||c||^2$, and 
+\begin{align*}
+    \lambda_{1,2} = \frac{(a + d) \pm \sqrt{(a - d)^2 - 4||c||^2}}{2}.
+\end{align*}
+Let $a=\alpha i$ and $d=\beta i$. Then $(a-d)^2=i^2(\alpha-\beta)^2$ is clearly negative.
+Therefore the discriminant is negative and the eigenvalues are all imaginary.
+
+\subsection*{Exercise 6}
+Let $R\in\mathbb M_n(\mathbb F)$ be an upper-triangular matrix with diagonal entries $r_{ii}$. 
+Then $\lambda I-R$ is also upper-triangular and so $\text{det}R = \Pi_{i=1}^n(\lambda_i-r_{ii})$.
+Since $r_{ii}$ are the roots of the characteristic polynomials, $\lambda_i=r_{ii}$.
+
+\subsection*{Exercise 8}
+(i)
+We know that $V$ is the span of $S$.
+If the vectors in $S$ are linearly independent, then $S$ is a basis for $V$.
+From Problem Set 2 we noticed that the vectors in $S$ are orthonormal under the inner product
+$<a,b>:=\frac{1}{\pi}\int_{-\pi}^{\pi}a(x)b(x)dx$.
+Therefore they are independent and are thus a basis of $V$.
+
+(ii)
+Since $d\sin(x)/dx=cos(x)$, $d\cos(x)/dx=-\sin(x)$, $d\sin(2x)/dx=2\cos(2x)$ and
+$d\cos(2x)/dx=-2\sin(2x)$, we have that
+\begin{align*}
+    D = 
+    \begin{bmatrix}
+        0 & -1 & 0 & 0\\
+        1 & 0 & 0 & 0\\
+        0 & 0 & 0 & 2\\
+        0 & 0 & -2 & 0
+    \end{bmatrix}.
+\end{align*}
+
+(iii)
+Two complementary $D-$invariant subspaces are $\text{span}\{\sin(x), \cos(x)\}$
+and $\text{span}\{\sin(2x), \cos(2x)\}$.
+
+\subsection*{Exercise 13}
+Since $\text{det}(\lambda I-A)=\lambda^2-1.4\lambda+0.4$, the eigenvalues are $1$ and $0.4$,
+with corresponding eigenvectors $(2, 1)$, and $(1, -1)$.
+Therefore
+\begin{align*}
+    P =
+    \begin{bmatrix}
+        2 & 1\\
+        1 & -1
+    \end{bmatrix}.
+\end{align*}
+
+\subsection*{Exercise 15}
+A is semisimple, thus there exist matrices $\Lambda$ and $P$ such that
+$A = P\Lambda P^{-1}$.
+Then 
+\begin{align*}
+    f(A) = a_0PP^{-1}+a_1P\Lambda P^{-1}+
+    \ldots+a_nP\Lambda^nP^{-1}=
+    Pf(\Lambda)P^{-1},
+\end{align*}
+where $f(\Lambda)$ is diagonal with elements $(f(\lambda_i))_{i=1}^n$.
+Since $f(A)$ is similar to $f(\Lambda)$, they have the same eigenvalues.
+
+\subsection*{Exercise 16}
+(i)
+By Proposition 4.3.10,
+\begin{align*}
+    A^k = 
+    \frac{1}{3}
+    \begin{bmatrix}
+        2 & 1\\ 1 & -1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0\\ 0 & 0.4^k
+    \end{bmatrix}
+    \begin{bmatrix}
+        2 & 1\\ 1 & -1
+    \end{bmatrix}.
+\end{align*}
+Consider the matrix 
+\begin{align*} 
+    B = 
+    \frac{1}{3}
+    \begin{bmatrix}
+        2 & 1\\ 1 & -1
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 & 0\\ 0 & 0
+    \end{bmatrix}
+    \begin{bmatrix}
+        2 & 1\\ 1 & -1
+    \end{bmatrix} =
+    \frac{1}{3}
+    \begin{bmatrix}
+        2 & 2\\ 1 & 1
+    \end{bmatrix}.
+\end{align*}
+Their difference is
+\begin{align*}
+    A^k - B =
+    \frac{1}{3}
+    \begin{bmatrix}
+        0.4^k & -2\times0.4^k\\ -0.4^k & 2\times0.4^k
+    \end{bmatrix},
+\end{align*}
+and its $1-$norm is $4/3\times0.4^k$, which converges to 0.
+
+(ii)
+The $\infty-$norm of $A^k-B$ is $0.4^k$, whereas the Frobenius norm is
+\begin{align*}
+    \sqrt{\text{tr}\left(\left(A^k-B\right)^T\left(A^k-B\right)\right)}=
+    \sqrt{10\times0.4^{2k}}
+\end{align*}
+and both of them converge to zero.
+
+(iii)
+By theorem 4.3.12, the eigenvalues of $3I+5A+A^3$ are given by
+$f(\lambda_i) = 3+5\lambda_i+\lambda_i^3$, where $\lambda_i$'s are the eigenvalues of $A$.
+So the eigenvalues are $f(1) = 9$ and $f(0.4)=5.064$.
+
+\subsection*{Exercise 18}
+Let $\lambda$ be an eigenvalue of $A$, then it is also an eigenvalue of $A^T$.
+Then there exists a nonzero vector $x$ such that $A^Tx=\lambda x$.
+Transposing both the RHS and the LHS we get the desired result.
+
+\subsection*{Exercise 20}
+Since $A$ is orthonormally similar to $B$, we know that there exists an orthonormal $P$
+such that $B = PAP^H$.
+Since $A$ is hermitian,
+\begin{align*}
+    B^H = (PAP^H)^H = PA^HP^H = PAP^H = B.
+\end{align*}
+
+\subsection*{Exercise 24}
+First notice that the denominator is real nonnegative.
+Also, notice that if $A$ is hermitian, then
+\begin{align*}
+    x^HAx = x^HA^Hx = (x^HAx)^H = \overline{x^HAx}.
+\end{align*}
+Thus $<x,Ax>=\overline{<x,Ax>}$, and so it is real.
+On the other hand, if $A$ is skew-hermitian, then
+\begin{align*}
+    x^HAx = -x^HA^Hx = -(x^HAx)^H = -\overline{x^HAx}.
+\end{align*}
+Thus $<x,Ax> = -\overline{<x,Ax>}$, and is therefore imaginary.
+
+\subsection*{Exercise 25}
+(i)
+Take an arbitrary vector $x$ in $\mathbb C^n$, then there exist coefficients $a_i$'s
+such that $x=\sum_ia_ix_i$, since $\{x_i\}_i$ is a basis.
+Then
+\begin{align*}
+    \left(\sum_jx_jx_j^H\right)\sum_ia_ix_i =
+    \sum_jx_jx_j^Ha_jx_j + \sum_j\sum_{i\neq j}x_jx_j^Ha_ix_i =
+    \sum_ja_jx_j
+\end{align*}
+because $x_j^Hx_j=1$ for any $j$ and $x_j^Hx_i=0$ for any $i\neq j$.
+Thus $(\sum_jx_jx_j^H)x=x$ for any $x$ in $\mathbb C^n$. 
+It must then be that $\sum_jx_jx_j^H=I$.
+
+(ii)
+Notice that
+\begin{align*}
+    Ax = \sum_jAa_jx_j = \sum_ja_j\lambda_jx_j
+\end{align*}
+and
+\begin{align*}
+    \left(\sum_j\lambda_jx_jx_j^H\right)\left(\sum_ia_ix_i\right)=
+    \sum_j\lambda_jx_jx_j^Ha_jx_j + \sum_j\sum_{i\neq j}\lambda_jx_jx_j^Ha_ix_i =
+    \sum_ja_j\lambda_jx_j,
+\end{align*}
+shows that $A=\sum_j\lambda_jx_jx_j^H$.
+
+\subsection*{Exercise 27}
+Since $A$ is positive definite, it is hermitian, hence its diagonal elements are reals.
+Also, let $e_i$ denote $i^\text{th}$ standard basis vector of $\mathbb F^n$.
+Then we have that, for any $i$:
+\begin{align*}
+    a_{ii} = e_i^HAe_i = \langle e_i,Ae_i\rangle > 0.
+\end{align*}
+
+\subsection*{Exercise 28}
+
+By proposition $4.5.7$, There exist matrices $S_A$ and $S_B$ 
+such that $A=S_A^HA_A$ and $B = S_B^HS_B$.
+Then 
+\begin{align*}
+    \text{Tr}(AB) = \text{Tr}(S_A^HS_AS_B^HS_B) =
+    \text{Tr}(S_BS_A^HS_AS_B^H) = \text{Tr}((S_AS_B^H)^HS_AS_B^H)
+    = ||S_AS_B^H||_F\geq 0.
+\end{align*}
+
+By Proposition $4.5.6$ $A=Q_AD_AQ_A^H$ and $B=Q_BD_BQ_D^H$, where $Q_A$ and $Q_B$
+are orthonormal and $D_A$, $D_B$ are diagonal matrices containing the eigenvalues
+of $A$ and $B$ respectively.
+Since the transpose is invariant under orthonormal transformations we have
+\begin{align*}
+    \text{Tr}(AB)=\text{Tr}(D_AD_B)=\sum_i\lambda_i^A\lambda_i^B\leq
+    \left(\sum_i\lambda_i^A\right)\left(\sum_i\lambda_i^B\right)=\text{Tr}(A)\text{Tr}(B),
+\end{align*}
+which concludes the proof.
+
+\subsection*{Exercise 31}
+(i)
+Let $B=A^HA$, then $B$ is hermitian.
+Then by Corollary $4.4.8$ $B$ has an orthonormal eigenbasis, say $\{b_i\}_{i=1}^n$,
+which spans $\mathbb F^n$,
+and real eigenvalues $\{\sigma_i\}_{i=1}^n$.
+Take an arbitrary $x\in\mathbb F^n$ and real $(a_i)_{i=1}^n$ such that
+$x=\sum_ia_ib_i$.
+We have 
+\begin{align*}
+    ||x||_2=<\sum_ia_ib_i,\sum_ia_ib_i>^{1/2}=
+    \sqrt{\sum_ia_i^2}
+\end{align*}
+since the $b_i$'s are orthonormal.
+Also
+\begin{align*}
+    Bx=B\left(\sum_ia_ib_i\right)=\sum_ia_i\sigma_ib_i.
+\end{align*}
+
+Let $\sigma_1$ be the largest eigenvalue of $B$.
+Then
+\begin{align*}
+    ||Ax|| =& <Ax,Ax> = <x,A^HAx> = 
+    <x,Bx> =\\ &<\sum_ia_ib_i,\sum_i\sigma_ia_ib_i> =
+    \sqrt{\sum_ia_i\sigma_i\bar{a}_i} \leq
+    ||x||\max_i\sqrt{|\sigma_i|}.
+\end{align*}
+So $||A||=\sup\{||Ax||\ :\ ||x||=1\}\leq\max_i\sqrt{|\sigma_i|}$.
+
+If we pick $x=b_1$, then
+\begin{align*}
+    ||A||\geq <b_1,Bb_1> = <b_1,\sigma_1b_1> = \sqrt{|\sigma_1|},
+\end{align*}
+which proves the result.
+
+(ii)
+
+
+\subsection*{Exercise 36}
+$-I$ has both eigenvalues $-1$ and both singular values $1$.
+ 
+
+\end{document}

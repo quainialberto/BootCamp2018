@@ -1,0 +1,81 @@
+\documentclass[11.5pt, letterpaper, bibtotoc,
+    tablecaptionabove, figurecaptionabove]{article}
+
+
+\setlength{\headheight}{10pt}
+\setlength{\headsep}{15pt}
+\setlength{\topmargin}{-25pt}
+\setlength{\topskip}{0in}
+\setlength{\textheight}{8.7in}
+\setlength{\footskip}{0.3in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+
+\usepackage{setspace}
+\setstretch{1.2}
+\setlength{\parskip}{5pt}%{6pt}
+\setlength{\parindent}{0pt}
+
+\usepackage{subfigure}
+\usepackage{subfiles}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\graphicspath{{images/}{../images/}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}{Notation}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remarks}{Remarks}
+\newtheorem{examples}{Examples}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ri}{ri}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\essential}{ess}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rank}{rank}
+
+\makeatletter
+\newcommand{\leqnomode}{\tagsleft@true\let\veqno\@@leqno}
+\newcommand{\reqnomode}{\tagsleft@false\let\veqno\@@eqno}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert#1
+\right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\makeatother
+
+\usepackage{bm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=red,
+}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\textbf{Alberto Quaini}
+
+\subsection*{Exercise 6.1}
+Let $f(w):=-e^{-w^Tx}$, $G(w):=w^TAw - w^TAy - w^Tx$,
+and $H(w)=y^Tw-w^Tx$. 
+Then the problem can be written in the following standard form:
+\begin{align*}
+    &\text{minimize}\quad\ f(w)\\
+    &\text{subject to}\quad G(w)\leq a\\
+    &\qquad \quad \quad \quad\ H(w)=b.
+\end{align*}
+
+
+\end{document}
