@@ -302,13 +302,13 @@ Then
 \begin{align*}
     \text{Tr}(AB) = \text{Tr}(S_A^HS_AS_B^HS_B) =
     \text{Tr}(S_BS_A^HS_AS_B^H) = \text{Tr}((S_AS_B^H)^HS_AS_B^H)
-    = ||S_AS_B^H||_F\geq 0.
+    = ||S_AS_B^H||_F^2\geq 0.
 \end{align*}
 
 By Proposition $4.5.6$ $A=Q_AD_AQ_A^H$ and $B=Q_BD_BQ_D^H$, where $Q_A$ and $Q_B$
 are orthonormal and $D_A$, $D_B$ are diagonal matrices containing the eigenvalues
 of $A$ and $B$ respectively.
-Since the transpose is invariant under orthonormal transformations we have
+Since the trace is invariant under orthonormal transformations we have
 \begin{align*}
     \text{Tr}(AB)=\text{Tr}(D_AD_B)=\sum_i\lambda_i^A\lambda_i^B\leq
     \left(\sum_i\lambda_i^A\right)\left(\sum_i\lambda_i^B\right)=\text{Tr}(A)\text{Tr}(B),
@@ -351,10 +351,58 @@ If we pick $x=b_1$, then
 which proves the result.
 
 (ii)
+Let $A = U \Sigma V^H$ be the singular value decomposition of $A$. 
+Then, $A^{-1} = (V^H)^{-1} \Sigma^{-1} U^{-1}$. 
+This is also a singular value decomposition, since $(V^H)^{-1} = V$ and 
+$U^{-1} = U^H$, because $U$ and $V$ are orthonormal matrices, and $\Sigma^{-1}$ is diagonal. 
+The largest singular value of $\Sigma^{-1}$ is $\frac{1}{\sigma_n}$, where $\sigma_n$ is the smallest one of $A$. 
+Therefore, by (i) we have that  $\norm{A^{-1}}_2 = \sigma^{-1}_n$.
 
+(iii)
+Let $A = U \Sigma V^H$. 
+Then,
+\begin{align*}
+    A^H = V \Sigma^H U^H 
+	A^T = \overline{V} \Sigma U^T 
+	A^H A = (V \Sigma^H U^H) (U \Sigma V^H) = V (\Sigma^H \Sigma) V^H
+\end{align*}
+All of these are singular value decompositions. 
+Now, consider the singular values of each of these decompositions (where $\Sigma^H = \Sigma$ because singular values are reals). 
+Thus, $A^H, A^T$ and $A$ all have the same singular values.
+So by (i) we have that $\norm{A^H}^2_2 = \norm{A^T}^2_2 =  \norm{A}^2_2 = \sigma^2_1$. 
+Also, notice that the diagonal elements of $(\Sigma^H \Sigma)$ are the singular values squared. 
+We conclude that $\norm{A^H A}_2  = \sigma^2_1$.
 
 \subsection*{Exercise 36}
 $-I$ has both eigenvalues $-1$ and both singular values $1$.
- 
+
+\subsection*{Exercise 38}
+I will prove (1) and (5), the other proofs follow a similar logic.
+
+(1)
+
+Let $A = U_1 \Sigma_1 V_1^H$ be the compact SVD of $A$. 
+The Moore-Penrose pseudoinverse of $A$ is $A^{\dagger} = V_1 \Sigma^{-1}_1 U^H_1$.
+Notice that,
+\begin{align*}
+    A A^{\dagger} A  &= (U_1 \Sigma_1 V_1^H)(V_1 \Sigma^{-1}_1 U^H_1) (U_1 \Sigma_1 V_1^H)
+	=  U_1 \Sigma_1 (V_1^HV_1) \Sigma^{-1}_1 (U^H_1 U_1) \Sigma_1 V_1^H \\
+	&= U_1 \Sigma_1  \Sigma^{-1}_1 \Sigma_1 V_1^H
+	= U_1 \Sigma_1 V_1^H = A
+\end{align*}
+Therefore, $ A A^{\dagger} A = A$.
+
+(5)
+
+First, notice that by (1), $AA^\dagger AA^\dagger = AA^\dagger$, so that $AA^\dagger$ is idempotent.
+Then, notice that $AA^\dagger=U_1U_1^H$ where $U_1$ is an orthonormal basis for the range of $A$.
+Let $u_i$ denote the $m-$ dimensional $i^{th}$ column of $U_1$. 
+Then
+\begin{align*}
+    U_1U_1^Hx=U_1(u_1^Hx, \ldots, u_r^Hx)^T
+    = \sum_iu_iu_i^Hx = \sum_iu_i^Hxu_i  = \sum_i<u_i,x>u_i,
+\end{align*}
+which is the projection of $x$ on the range of $A$.
+
 
 \end{document}
