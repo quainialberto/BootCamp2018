@@ -243,9 +243,9 @@ On the one hand,
 \end{align*}
 On the other, 
 \begin{align*}
-    g(\lambda t_1 + (1-\lambda)t_2) =&
-    f((\lambda t_1+(1-\lambda)t_2)A + (1-\lambda t_1+(1-\lambda)t_2)B)=\\
-    &f(\lambda(t_1A+(1-t_1)B)+(1-\lambda)(t_2A+(1-t_2)B)).
+    g(\lambda t_1 + (1-\lambda)t_2) &=
+    f((\lambda t_1+(1-\lambda)t_2)A + (1-\lambda t_1+(1-\lambda)t_2)B)\\
+    &=f(\lambda(t_1A+(1-t_1)B)+(1-\lambda)(t_2A+(1-t_2)B)).
 \end{align*}
 Since $g$ is convex we get
 \begin{align*}
@@ -266,23 +266,22 @@ and so
 By the fact that $\text{det}(AB)=\text{det}(A)\text{det}(B)$ and the properties of logarithms,
 we obtain
 \begin{align*}
-    -\log(\text{det}(S^H(tI+(1-t)(S^H)^{-1}BS^{-1})S))=&
+    -\log(\text{det}(S^H(tI+(1-t)(S^H)^{-1}BS^{-1})S))&=
     -\log(\text{det}(S^H)) - \log(\text{det}(tI+(1-t)(S^H)^{-1}BS^{-1})) - \log(\text{det}(S))\\
-    &-\log(\text{det}(S^H)\text{det}(S)) - \log(\text{det}(tI+(1-t)(S^H)^{-1}BS^{-1}))=\\
-    &-\log(\text{det}(A))- \log(\text{det}(tI+(1-t)(S^H)^{-1}BS^{-1})).
+    &=-\log(\text{det}(S^H)\text{det}(S)) - \log(\text{det}(tI+(1-t)(S^H)^{-1}BS^{-1}))\\
+    &=-\log(\text{det}(A))- \log(\text{det}(tI+(1-t)(S^H)^{-1}BS^{-1})).
 \end{align*}
 
 (c)
 
-Since $A,B\in PD_n(\mathbb R)$, then $A^{-1}\in PD_n(\mathbb R)$ and 
+Since $A,B\in PD_n(\mathbb R)$, then $B^{-1}\in PD_n(\mathbb R)$ and
+$((S^H)^{-1}BS^{-1})^{-1} = SB^{-1}S^H$ is positive definite since
 \begin{align*}
-    &\text{det}((S^H)^{-1}BS^{-1})=
-    \text{det}((S^H)^{-1})\text{det}(B)\text{det}(S^{-1})=\\
-    &\text{det}(S^{-1})\text{det}((S^H)^{-1})\text{det}(B)=
-    \text{det}(A^{-1})\text{det}(B)>0,
+    x^HSB^{-1}S^Hx=
+    (S^Hx)^HB^{-1}(xS)>0.
 \end{align*}
-and so $(S^H)^{-1}BS^{-1}$ is full rank.
-Now let $\{\lambda_i\}_i$ be the collection of eigenvalues of $((S^H)^{-1}BS^{-1})$ 
+Therefore $(S^H)^{-1}BS^{-1}$ is positive definite.
+Now let $\{\lambda_i\}_i$ be the collection of eigenvalues of $((S^H)^{-1}BS^{-1})$
 and $\{x_i\}_i$ the corresponding collection of eigenvectors. Then for every $i$:
 \begin{align*}
     (tI+(1-t)(S^H)^{-1}BS^{-1})x_i=
@@ -293,8 +292,8 @@ Thus, $\{t + (1-t)\lambda_i\}_i$ are the eigenvalues of $(tI+(1-t)(S^H)^{-1}BS^{
 corresponding to the $\{x_i\}_i$, and we can conclude that
 \begin{align*}
     -\log(\text{det}(A))- \log(\text{det}(tI+(1-t)(S^H)^{-1}BS^{-1}))=&
-    -\log(\text{det}(A))- \log(\Pi_{i=1}^n(t + (1-t)\lambda_i))=\\
-    &-\log(\text{det}(A))- \sum_{i=1}^n\log((t + (1-t)\lambda_i)).
+    -\log(\text{det}(A))- \log(\Pi_{i=1}^n(t + (1-t)\lambda_i))\\
+    &=-\log(\text{det}(A))- \sum_{i=1}^n\log((t + (1-t)\lambda_i)).
 \end{align*}
 
 (d)
