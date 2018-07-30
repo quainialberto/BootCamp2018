@@ -1,0 +1,231 @@
+\documentclass[11.5pt, letterpaper, bibtotoc,
+    tablecaptionabove, figurecaptionabove]{article}
+
+
+\setlength{\headheight}{10pt}
+\setlength{\headsep}{15pt}
+\setlength{\topmargin}{-25pt}
+\setlength{\topskip}{0in}
+\setlength{\textheight}{8.7in}
+\setlength{\footskip}{0.3in}
+\setlength{\oddsidemargin}{0.0in}
+\setlength{\evensidemargin}{0.0in}
+\setlength{\textwidth}{6.5in}
+
+\usepackage{setspace}
+\setstretch{1.2}
+\setlength{\parskip}{5pt}%{6pt}
+\setlength{\parindent}{0pt}
+
+\usepackage{subfigure}
+\usepackage{subfiles}
+\usepackage{graphicx}
+\usepackage{epsfig}
+\graphicspath{{images/}{../images/}}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{lemma}{Lemma}
+\newtheorem{notation}{Notation}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remarks}{Remarks}
+\newtheorem{examples}{Examples}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\ri}{ri}
+\DeclareMathOperator{\interior}{int}
+\DeclareMathOperator{\essential}{ess}
+\DeclareMathOperator{\range}{range}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rank}{rank}
+
+\makeatletter
+\newcommand{\leqnomode}{\tagsleft@true\let\veqno\@@leqno}
+\newcommand{\reqnomode}{\tagsleft@false\let\veqno\@@eqno}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert#1
+\right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\makeatother
+
+\usepackage{bm}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=red,
+}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+\section*{Nonlinear Optimization}
+\textbf{Alberto Quaini}
+
+\subsection*{Exercise 1}
+Let 
+\begin{align*}
+    f:\mathbb R^n\to\mathbb R, x\mapsto a^Tx+b,
+\end{align*}
+for some $a\in\mathbb R^n, b\in\mathbb R$.
+Suppose that $f$ has a minimizer at $x^*\in\mathbb R^n$.
+Since any point in $\mathbb R^n$ is an interior point,
+by the FONC, $Df^T(x)=a$ must be zero,
+which implies that $f$ is constant.
+Suppose now that $a$ is nonzero.
+Then, by the same condition we know that there is no minimizer.
+
+\subsection*{Exercise 2}
+Suppose $b\in\mathbb R^m$, $A\in M_{m\times n}(\mathbb R)$ is a nonzero matrix
+and 
+\begin{align*}
+    f:\mathbb R^n\to\mathbb R, x\mapsto\norm{Ax-b}_2.
+\end{align*}
+Notice that minimizing $f$ is the same as minimizing $f^2$.
+Also,
+\begin{align*}
+    f^2(x)&=\norm{Ax-b}_2^2\\
+    &=(Ax-b)^T(Ax-b)\\
+    &=x^TA^TAx-2b^TAx+b^Tb.
+\end{align*}
+Since $b^Tb$ is constant, minimizing $f^2$ 
+is equivalent to minimizing $g(x)=x^TA^TAx-2b^TAx$.
+
+Notice that $g$ is continuous and continuously differentiable, 
+$Dg(x)=2x^TA^TA-2b^TA$ and $D^2g(x)=2A^TA$, which is positive definite.
+First, suppose that $x^*$ is a minimizer of $g$.
+Then FONC implies $A^TAx^*=A^Tb$.
+Now suppose that $x^*$ is such that $A^TAx^*=A^Tb$.
+Then $Dg(x^*)$ is zero and by the SOSC we have that $x^*$ is a minimizer of $g$.
+
+\subsection*{Exercise 3}
+In this chapter, the book covers basic iterative methods to solve unconstrained optimization problems 
+with a nonlinear objective function, say $f$, mapping $\mathbb R^n$ to the real line.
+All of them require an initial value, say $x_0$, and produce a finite sequence of approximate solutions,
+$(x_1,\ldots,x_i,\ldots,x_N)$, which hopefully get closer and closer to the true solution, say $x$,
+until a certain criterion is met.
+There can be multiple criteria stopping the iteration.
+One can be to stop when the difference between two successive iterations gets lower than
+a certain small tolerance with respect to some norm.
+Another can be the same idea applied to the difference between function values
+computed at two successive iterations.
+Some other citeria are possible. 
+When the chosen criterion (virtually all of them) is not guaranteed to be met in a finite number of iterations,
+a stopping criterion imposing some maximum number of iterations is employed.
+
+\textbf{Gradient descent methods}\\
+The basic idea of gradient descent methods is to compute at each iteration
+the direction of steepest descent given by the negative gradient, $-Df^T(x_i)$,
+and move the next iteration along this direction, $x_{i+1}=x_i-\alpha Df^T(x_i)$,
+where $\alpha$ is some number measuring the step.
+$\alpha$ is usually set via line search methods, trying to pick the optimal step,
+or via cheaper methods.
+These methods are useful to get closer to $x$ when the initial guess is far
+away from it, but in some cases they can converge very slowly.
+Finally, these methods require that the gradient exists, therefore are applicable just to differentiable objective functions.
+
+\textbf{Newton and Quasi-Newton methods}\\
+Newton's method performs a local quadratic approximation of the 
+objective function at each iteration and moves towards the minimizer of the quadratic approximation.
+It can be very fast for small dimensional problems, where the Hessian $D^2f(x_i)$ 
+is positive definite, or when $(D^2f(x_i))^{-1}Df^T(x_i)$ can be computed cheaply and reliably.
+If the Hessian is not positive definite and/or the dimension of the problem is large,
+Then Newton's method becomes computationally expensive and variants such as
+Quasi-Newton methods or BFGS can be employed instead.
+
+\textbf{Conjugate gradient methods}\\
+Gradient methods are computationally cheap but have slow convergence,
+whereas Newton's methods may converge fast but require an expensive comptation of the Hessian
+at each iteration.
+Conjugate gradient methods fall between these two methods.
+At each iteration, these methods move along so called $Q-$conjugate directions,
+which are cheaply computed and do not require much information from previuos steps.
+Conjugate gradient methods are espectially suited for solving large quadratic problems
+of the form $x^TQx-b^Tx+c$, where $Q$ is symmetric, positive definite and possibly sparse.
+
+\textbf{Nonlinear least squares methods}\\
+When the objective function can be written as the sum of squares of a set of residuals,
+then Gauss-Newton method, an adaptation of Newton's method, can be employed.
+
+\subsection*{Exercise 4}
+Suppose $x_0$ is such that $Df^T(x_0)=Qx_0-b$ is an eigenvector of $Q$
+and 
+\begin{align*}
+    \alpha_0=\frac{Df(x_0)Df^T(x_0)}{Df(x_0)QDf^T(x_0)}.
+\end{align*}
+
+\subsection*{Exercise 5}
+Suppose $f:\mathbb R^n\to\mathbb R$ is $C^1$.
+The steepest descent iteration is $x_{i+1}=x_i-\alpha_{i+1}Df^T(x_i)$, where
+\begin{align*}
+    \alpha_{i+1}=\arg \min_a f(x_i-aDf^T(x_i)),
+\end{align*}
+and so $Df(x_i-\alpha_{i+1}Df^T(x_i))Df^T(x_i)=0$.
+Then, notice that
+\begin{align*}
+    (x_{i+2}-x_{i+1})^T(x_{i+1}-x_i)&=\alpha_{i+1}\alpha_iDf(x_{i+1})Df^T(x_i)\\
+    &=\alpha_{i+1}\alpha_iDf(x_i-\alpha_{i+1}Df^T(x_i))Df^T(x_i)\\
+    &=0.
+\end{align*}
+
+\subsection*{Exercise 10}
+Suppose $f(x)=x^TQx/2-b^Tx$, where $Q\in M_n(\mathbb R)$
+is symmetric and positive definite, $b\in\mathbb R^n$.
+Notice that $Df^T(x)=Qx-b$ and $D^2f(x)=Q$.
+By the SONC we know that $x^*=Q^{-1}b$ is a strict local minimizer.
+Take an initial guess $x_0\in\mathbb R^n$.
+Then the Newton's method implies
+\begin{align*}
+    x_1&=x_0+(D^2f(x_0))^{-1}Df^T(x_0)\\
+    &=x_0+Q^{-1}(Qx_0-b)\\
+    &=Q^{-1}b,
+\end{align*}
+which is the expression for the minimizer of $f$, $x^*$.
+
+\subsection*{Exercise 12}
+Suppose $A\in M_n(\mathbb F)$ has eigenvalues $\lambda_1,\ldots,\lambda_n$,
+with corresponding eigenvectors $x_1,\ldots,x_n$.
+Suppose also that $B=A+\mu I$.
+Then $B\in M_n(\mathbb F)$ and for $i=1,\ldots,n$, we have
+\begin{align*}
+    Bx_i&=Ax_i+\mu Ix_i\\
+    &=\lambda_ix_i+\mu x_i\\
+    &=(\lambda_i+\mu)x_i,
+\end{align*}
+so that $B$ has the same eigenvectors of $A$,
+with corresponding eigenvalues $\lambda_1+\mu,\ldots,\lambda_n+\mu$.
+
+\subsection*{Exercise 15}
+
+
+\subsection*{Exercise 18}
+Let $Q\in M_n(\mathbb R)$ satisfy $Q>0$,
+$b\in\mathbb R^n$, $c\in\mathbb R$ and let
+\begin{align*}
+    f:\mathbb R^n\to\mathbb R,\ x\mapsto x^TQx-b^Tx+c.
+\end{align*}
+Given an initial guess $x_0$ and $Q-$conjugate directions $d_0,d_1,\ldots,d_{n-1}$
+in $\mathbb R^n$, the optimal line search solution for
+$x_{k+1}=x_k+\alpha_k d_k$ is defined as
+\begin{align*}
+    \alpha_k &= \arg\min_a f(x_k+ad_k)\\
+    &=\arg\min_a \tilde{x}_k(a)^TQ\tilde{x}_k(a)/2-b^T\tilde{x}_k(a)+c,
+\end{align*}
+where $\tilde{x}_k:\mathbb R\to\mathbb R^n,\ a\mapsto x_k+ad_k$.
+Notice that the FONC for finding $\alpha_k$ implies:
+\begin{align*}
+    &d_k^TQ\tilde{x}_k(\alpha_k)=d_k^Tb\Longleftrightarrow\\
+    &d_k^TQ(x_k+\alpha_kd_k)=d_k^Tb_k\Longleftrightarrow\\
+    &\alpha_k=\frac{d_k^Tr_k}{d_k^TQd_k},
+\end{align*}
+where $r_k=b-Qx_k$.
+
+
+
+\end{document}
+
