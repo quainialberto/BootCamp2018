@@ -153,11 +153,43 @@ When the objective function can be written as the sum of squares of a set of res
 then Gauss-Newton method, an adaptation of Newton's method, can be employed.
 
 \subsection*{Exercise 4}
-Suppose $x_0$ is such that $Df^T(x_0)=Qx_0-b$ is an eigenvector of $Q$
+We first prove the "only if" direction.
+Suppose $x_0$ is such that $Df^T(x_0)=Qx_0-b$ is an eigenvector of $Q$,
+that is, $Q(Qx_0-b)=\lambda(Qx_0-b)$ for some real $\lambda$.
+Then 
+\begin{align*}
+    x_1&=x_0-\alpha_0Q(Qx_0-b)\\
+    &=x_0-\alpha_0\lambda(Qx_0-b).
+\end{align*}
 and 
 \begin{align*}
-    \alpha_0=\frac{Df(x_0)Df^T(x_0)}{Df(x_0)QDf^T(x_0)}.
+    \alpha_0=\arg\min_a f(x_1).
 \end{align*}
+If $\alpha=1/\lambda^2$, then:
+\begin{align*}
+    Qx_1&=Q(x_0-\alpha_0\lambda(Qx_0-b))\\
+    &=Qx_0-\alpha_0\lambda^2(Qx_0-b)\\
+    &=Qx_0-Qx_0-b\\
+    =b.
+\end{align*}
+Since $Qx_1=b$, $x_1$ is the minimum of the function,
+$\alpha_0$ was chosen righteously and the algorithm converged in one step.
+
+We now prove the "if" direction.
+Suppose the algorithm converges in one step.
+Then $Qx_1=b$, or
+\begin{align*}
+    Q(x_0-\alpha_0Q(Qx_0-b))=b.
+\end{align*}
+Now notice that:
+\begin{align*}
+    (I-\alpha_0Q)(Qx_0-b)&=Qx_0-b-\alpha_0Q(Qx_0-b)\\
+    &=Q(x_0-\alpha_0Q(x_0-b))-b\\
+    &=Qx_1-b\\
+    &=0.
+\end{align*}
+Thus, $Qx_0-b$ is an eigenvector of $Q$ with eigenvalue $\alpha_0$.
+
 
 \subsection*{Exercise 5}
 Suppose $f:\mathbb R^n\to\mathbb R$ is $C^1$.
@@ -201,7 +233,23 @@ so that $B$ has the same eigenvectors of $A$,
 with corresponding eigenvalues $\lambda_1+\mu,\ldots,\lambda_n+\mu$.
 
 \subsection*{Exercise 15}
-
+First consider these identities:
+\begin{align*}
+    U + UCVA^{-1}U&=UC(C^{-1}+VA^{-1}U)\\
+    &=(A+UCV)A^{-1}U
+\end{align*}
+and
+\begin{align*}
+    (A+UCV)^{-1}UC=A^{-1}U(C^{-1}+VA^{-1}U)^{-1}.
+\end{align*}
+Then,
+\begin{align*}
+    A^{-1}&=(A+UCV)^{-1}(A+UCV)A^{-1}\\
+    &=(A+UCV)^{-1}(I+UCVA^{-1})\\
+    &=(A+UCV)^{-1}+(A+UCV)^{-1}UCVA^{-1}\\
+    &=(A+UCV)^{-1}+A^{-1}U(C^{-1}+VA^{-1}U)^{-1}VA^{-1},
+\end{align*}
+and the proof is concluded.
 
 \subsection*{Exercise 18}
 Let $Q\in M_n(\mathbb R)$ satisfy $Q>0$,
@@ -225,7 +273,9 @@ Notice that the FONC for finding $\alpha_k$ implies:
 \end{align*}
 where $r_k=b-Qx_k$.
 
-
+%\subsection*{Exercise 20}
+%In Exercise 5 we show that in the case of steepest descent
+%with optimal line search, $Df^T(x_i)\perp Df^T(x_{i+1})$
 
 \end{document}
 
